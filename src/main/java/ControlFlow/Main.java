@@ -5,30 +5,60 @@
  */
 package ControlFlow;
 import java.util.Scanner;
+import java.lang.Math;
 /**
  *
  * @author jared
  */
 public class Main {
 
+    //generate 5 random numbers between 1 and 65
+    //generate a "magic ball" number between 1 and 75
+    //viewer should enable line wrap
+    public static int[] generateLottoNumbers(String redCar, String petName, int petAge, int luckyNumber, String doYouHaveAFavoriteQB, int qbJerseyNumber, int carYearModel, String favoriteActorFirstName, int randomNumberOnetoFifty){
+        
+        int[] lottoNumbers = {0,1,2,3,4,5};
+        
+        //generate magic ball first
+        //multiply luckyNumber by a random Integer then subtract 75 if it is greater than 75
+        int magicBall = (int) (luckyNumber * Math.random() +1); //+1 so magicBall is never 0.  
+        while(magicBall > 75){
+            magicBall-=75;
+        }
+        lottoNumbers[5]=magicBall;
+        //two digit year model + lucky number
+        
+        //first letter of favorite actor/actress to an integer
+        
+        //42
+        
+        //age of favorite pet + car model year
+        
+        //favoriteQBNumber + age of pet + lucky number
+        
+        return lottoNumbers;
+        
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         //fields for calculating the lotto number
-        String redCar;
-        String petName;
-        int petAge;
-        int luckyNumber;
-        String doYouHaveAFavoriteQB;
-        int qbJerseyNumber;
-        int carYearModel; //two digits
-        String favoriteActorFirstName;
-        int randomNumberOnetoFifty; //"random"
+        //default values are for testing so I don't have to enter inputs over and over
+        String redCar="no";
+        String petName="Skoogie";
+        int petAge=6;
+        int luckyNumber=7;
+        String doYouHaveAFavoriteQB="no";
+        int qbJerseyNumber=-1;
+        int carYearModel=8; //two digits
+        String favoriteActorFirstName="Johnny";
+        int randomNumberOnetoFifty=4; //"random"
         
         
         //prints ASCII characters
-        AsciiChars.printNumbers(); 
+        /* AsciiChars.printNumbers(); 
         AsciiChars.printLowerCase();
         AsciiChars.printUpperCase();
         //gets name and prints it
@@ -63,11 +93,17 @@ public class Main {
             favoriteActorFirstName = scanner.nextLine();
             System.out.println("Pretend you're a RNG. Enter a random number between 1 and 50");
             randomNumberOnetoFifty = Integer.parseInt(scanner.nextLine());
+*/
+            //infinite loop for testing
+            while(true){
+                
             
+            int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); int x=3; //placeholder
+            }
             //repeat if choice is y or yes
-            System.out.println("Do you want to pick more lotto numbers?");
-            choice = scanner.nextLine();
+           /* System.out.println("Do you want to pick more lotto numbers?");
+            choice = scanner.nextLine();*/
         }
     }
 
-}
+//}
