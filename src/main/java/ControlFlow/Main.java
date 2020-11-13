@@ -27,17 +27,26 @@ public class Main {
         }
         lottoNumbers[5]=magicBall;
         //two digit year model + lucky number
-        
-        //first letter of favorite actor/actress to an integer
-        
+        lottoNumbers[0] = carYearModel + luckyNumber;
+        //first letter of favorite actor/actress to an integer by ASCII
+        lottoNumbers[1] = (int) favoriteActorFirstName.charAt(0); 
         //42
+	lottoNumbers[2] = 42; //best number
         
         //age of favorite pet + car model year
+	lottoNumbers[3] = petAge + carYearModel;
         
         //favoriteQBNumber + age of pet + lucky number
+	lottoNumbers[4] = qbJerseyNumber + petAge + luckyNumber;
         
         return lottoNumbers;
         
+    }
+    public static String printLottoNumbers(int[] lottoNumbers){
+        String str = "";
+        for(int number : lottoNumbers){
+            str += Integer.toString(number);
+        }
     }
 
     /**
@@ -98,7 +107,8 @@ public class Main {
             while(true){
                 
             
-            int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); int x=3; //placeholder
+            int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
+            int x=3; //placeholder
             }
             //repeat if choice is y or yes
            /* System.out.println("Do you want to pick more lotto numbers?");
