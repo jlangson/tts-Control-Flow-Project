@@ -95,7 +95,7 @@ public class Main {
         
         
         //prints ASCII characters
-        /* AsciiChars.printNumbers(); 
+        AsciiChars.printNumbers(); 
         AsciiChars.printLowerCase();
         AsciiChars.printUpperCase();
         //gets name and prints it
@@ -108,7 +108,7 @@ public class Main {
         System.out.println("Do you wish to continue and pick your lotto numbers? (yes)");
         String choice = scanner.nextLine();
         while(choice.equals("y") || choice.equals("yes")){
-            System.out.println("Do you have a red car? (yes, no");
+            System.out.println("Do you have a red car? (yes, no)");
             redCar = scanner.nextLine();
             System.out.println("What is the name of your favorite pet?");
             petName =  scanner.nextLine();
@@ -130,19 +130,17 @@ public class Main {
             favoriteActorFirstName = scanner.nextLine();
             System.out.println("Pretend you're a RNG. Enter a random number between 1 and 50");
             randomNumberOnetoFifty = Integer.parseInt(scanner.nextLine());
-*/
-            //infinite loop for testing
-           // while(true){
-                
+
             
             int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
             System.out.println("break here");
             printLottoNumbers(lottoNumbers);
-         //   }
+
             //repeat if choice is y or yes
-           /* System.out.println("Do you want to pick more lotto numbers?");
-            choice = scanner.nextLine();*/
+           System.out.println("Play again? (yes, no)");
+           choice = scanner.nextLine();
         }
+        System.out.println("Thank you for playing.");
     }
 
-//}
+}
