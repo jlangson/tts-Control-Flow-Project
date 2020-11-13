@@ -38,6 +38,12 @@ public class Main {
         
         //favoriteQBNumber + age of pet + lucky number
 	lottoNumbers[4] = qbJerseyNumber + petAge + luckyNumber;
+        //testing by printing
+        System.out.println("lotto numbers inside method:");
+        for(int number : lottoNumbers){
+            System.out.println(number);
+        }
+
         
         return lottoNumbers;
         
@@ -48,7 +54,7 @@ public class Main {
         System.out.print("Lottery numbers: "); 
         //stop 1 less because magic ball needs to be printed special
         for(int i=0; i < lottoNumbers.length-1; i++){
-            System.out.print(Integer.toString(i) +", ");
+            System.out.print(Integer.toString(lottoNumbers[i]) +", ");
         }
         //print magic ball
         System.out.print("Magic ball: " +lottoNumbers[lottoNumbers.length-1] +"\n");        
@@ -113,6 +119,7 @@ public class Main {
                 
             
             int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
+            System.out.println("break here");
             printLottoNumbers(lottoNumbers);
          //   }
             //repeat if choice is y or yes
