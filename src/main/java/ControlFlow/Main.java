@@ -15,13 +15,21 @@ public class Main {
     //generate 5 random numbers between 1 and 65
     //generate a "magic ball" number between 1 and 75
     //viewer should enable line wrap
+//    @SuppressWarnings("empty-statement")
     public static int[] generateLottoNumbers(String redCar, String petName, int petAge, int luckyNumber, String doYouHaveAFavoriteQB, int qbJerseyNumber, int carYearModel, String favoriteActorFirstName, int randomNumberOnetoFifty){
         
-        int[] lottoNumbers = {0,1,2,3,4,5};
+        int[] lottoNumbers = {0,1,2,3,4,5}; //place holder values
+        
+        //generate three random integers from 1 to 75
+        //because we're told to
+        int firstRandom = (int) (Math.random() * 75) + 1; //for magic ball
+        int secondRandom = (int) (Math.random() * 75) + 1; //not used
+        int thirdRandom = (int) (Math.random() * 75) + 1;  //not used
+        
         
         //generate magic ball first
-        //multiply luckyNumber by a random Integer then subtract 75 if it is greater than 75
-        int magicBall = (int) (luckyNumber * Math.random() +1); //+1 so magicBall is never 0.  
+        //multiply luckyNumber by a random int (firstRandom) then subtract 75 if it is greater than 75
+        int magicBall = (int) (luckyNumber * firstRandom);
         while(magicBall > 75){
             magicBall-=75;
         }
@@ -30,23 +38,32 @@ public class Main {
         lottoNumbers[0] = carYearModel + luckyNumber;
         //first letter of favorite actor/actress to an integer by ASCII
         lottoNumbers[1] = (int) favoriteActorFirstName.charAt(0); 
-        //42
+        //hard code as 42
 	lottoNumbers[2] = 42; //best number
-        
         //age of favorite pet + car model year
 	lottoNumbers[3] = petAge + carYearModel;
+        //3rd letter of favorite pet as ASCII int
+	lottoNumbers[4] = (int) petName.charAt(2);
         
-        //favoriteQBNumber + age of pet + lucky number
-	lottoNumbers[4] = qbJerseyNumber + petAge + luckyNumber;
-        //testing by printing
-        System.out.println("lotto numbers inside method:");
-        for(int number : lottoNumbers){
-            System.out.println(number);
+        //if they are outside of the boundaries (1 to 65) fix it. 
+        //-1 to not adjust magicBall
+        for (int i=0; i < lottoNumbers.length-1; i++) {
+            lottoNumbers[i] = stayBounded(lottoNumbers[i], 1, 65);
         }
-
         
         return lottoNumbers;
         
+    }
+    //boundaries for the lotto numbers are 1 to 65 inclusive
+    //add or subtract by max if they are outside of the boundary
+    public static int stayBounded(int value, int min, int max){
+        while(value < min){
+            value+=max;
+        }
+        while(value > max){
+            value-=max;
+        }
+        return value;
     }
     public static void printLottoNumbers(int[] lottoNumbers){
         //desired format
