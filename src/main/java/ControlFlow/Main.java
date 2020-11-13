@@ -42,11 +42,16 @@ public class Main {
         return lottoNumbers;
         
     }
-    public static String printLottoNumbers(int[] lottoNumbers){
-        String str = "";
-        for(int number : lottoNumbers){
-            str += Integer.toString(number);
+    public static void printLottoNumbers(int[] lottoNumbers){
+        //desired format
+       // Lottery numbers: 4, 17, 15, 52, 26  Magic ball: 22
+        System.out.print("Lottery numbers: "); 
+        //stop 1 less because magic ball needs to be printed special
+        for(int i=0; i < lottoNumbers.length-1; i++){
+            System.out.print(Integer.toString(i) +", ");
         }
+        //print magic ball
+        System.out.print("Magic ball: " +lottoNumbers[lottoNumbers.length-1] +"\n");        
     }
 
     /**
@@ -104,12 +109,12 @@ public class Main {
             randomNumberOnetoFifty = Integer.parseInt(scanner.nextLine());
 */
             //infinite loop for testing
-            while(true){
+           // while(true){
                 
             
             int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
-            int x=3; //placeholder
-            }
+            printLottoNumbers(lottoNumbers);
+         //   }
             //repeat if choice is y or yes
            /* System.out.println("Do you want to pick more lotto numbers?");
             choice = scanner.nextLine();*/
