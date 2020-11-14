@@ -70,5 +70,5 @@ public class InputValidation {
     for(String input : testInputs){
         System.out.println(input+ "\tisYesNo?\t" + isYesNo(input) +"\tisInt?\t" + isInt(input) +"\tisTwoChars\t" + isTwoChars(input) + "\tisQBJersey\t" + isQBJersey(input) + "\tisCarModel\t" + isCarModel(input) +"\tb/t1.50\t" + between1And50(input));
         }
-   } 
+   }
 }

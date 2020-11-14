@@ -96,7 +96,7 @@ public class Main {
         
         //fields for calculating the lotto number
         //default values are for testing so I don't have to enter inputs over and over
-        String redCar="no";
+        String redCar="no"; //not used in generated lotto numbers
         String petName="Skoogie";
         int petAge=6;
         int luckyNumber=7;
@@ -105,7 +105,7 @@ public class Main {
         int carYearModel=8; //two digits
         String favoriteActorFirstName="Johnny";
         int randomNumberOnetoFifty=4; //"random"
-        String maybeNumber=""; //for reading the scanner input when numbers are expected. 
+        String line=""; //for reading the scanner input. If the input is valid then an above field gains the value of line
         
         
         //prints ASCII characters
@@ -123,32 +123,68 @@ public class Main {
         String choice = scanner.nextLine();
         while(choice.equals("y") || choice.equals("yes")){
             System.out.println("Do you have a red car? (yes, no)");
-            redCar = scanner.nextLine();
+            line = scanner.nextLine();
+            while(!InputValidation.isYesNo(line)){
+                System.out.println("Invalid choice, try again");
+                line=scanner.nextLine();
+            }
+            redCar = line;
             System.out.println("What is the name of your favorite pet?");
-            petName =  scanner.nextLine();
+            line = scanner.nextLine();
+            petName =  line;
             System.out.println("What is the age of your favorite pet?");
-            maybeNumber = scanner.nextLine();
-            petAge = Integer.parseInt(maybeNumber);
+            line = scanner.nextLine();
+        while(!InputValidation.isInt(line) || Integer.parseInt(line) < 0){
+                
+                System.out.println("Pet age must be an an int 0 or higher. Try again");
+                line = scanner.nextLine();
+            }
+            petAge = Integer.parseInt(line);
+           
             System.out.println("What is your lucky number (ints only)");
-            maybeNumber = scanner.nextLine();
-            luckyNumber = Integer.parseInt(maybeNumber);
+            line = scanner.nextLine();
+            while(!InputValidation.isInt(line)){
+                System.out.println("Not an int. Try again");
+                line = scanner.nextLine();
+            }
+            luckyNumber = Integer.parseInt(line);
+            
             System.out.println("Do you have a favorite quarterback? (yes, no)");
-            doYouHaveAFavoriteQB = scanner.nextLine(); //if not yes or y then dont' ask for jersey number;
-            if(doYouHaveAFavoriteQB.equals("yes") || doYouHaveAFavoriteQB.equals("y")){
+            line = scanner.nextLine();
+            while(!InputValidation.isYesNo(line)){
+                System.out.println("Choose yes or no");
+                line = scanner.nextLine();
+            }
+            doYouHaveAFavoriteQB = line; //if not yes or y then dont' ask for jersey number;
+            if(doYouHaveAFavoriteQB.equalsIgnoreCase("yes") || doYouHaveAFavoriteQB.equalsIgnoreCase("y")){
                 System.out.println("What is your favorite QB's jersey number");
-                maybeNumber = scanner.nextLine();
-                qbJerseyNumber = Integer.parseInt(maybeNumber);
+                line = scanner.nextLine();
+                while(!InputValidation.isQBJersey(line)){ //isQBJersey checks if it is int AND if it is 0 to 19 inclusive. 1 to 19 is current and 0 is a historical value
+                    System.out.println("QB Jersseys must be an int from 0 to 19."
+                            + "\nhttps://en.wikipedia.org/wiki/National_Football_League_uniform_numbers#Current_system");
+                    line = scanner.nextLine();
+                }
+                qbJerseyNumber = Integer.parseInt(line);
             } else{
                 qbJerseyNumber = -1; //means there is no favorite QB
             }
             System.out.println("What is the two-digit model year of your car?");
-            maybeNumber = scanner.nextLine();
-            carYearModel = Integer.parseInt(maybeNumber);
+            line = scanner.nextLine();
+            while(!InputValidation.isCarModel(line)){
+                System.out.println("Car model must be two digits");
+                line = scanner.nextLine();
+            }
+            carYearModel = Integer.parseInt(line);
             System.out.println("What is the first name of your favorite actor or actresss");
-            favoriteActorFirstName = scanner.nextLine();
+            line = scanner.nextLine();
+            favoriteActorFirstName = line;
             System.out.println("Pretend you're a RNG. Enter a random number between 1 and 50");
-            maybeNumber = scanner.nextLine();
-            randomNumberOnetoFifty = Integer.parseInt(maybeNumber);
+            line = scanner.nextLine();
+            while(!InputValidation.between1And50(line)){
+                System.out.println("Number must be between 1 and 50 inclusive.");
+                line = scanner.nextLine();
+            }
+            randomNumberOnetoFifty = (int) Double.parseDouble(line);
 
             
             int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
