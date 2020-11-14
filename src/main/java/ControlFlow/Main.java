@@ -93,9 +93,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+//        InputValidation.testInputs(isYesNo(InputValidation.testInputs));
+        InputValidation.runTests(InputValidation::isYesNo);
+//      System.out.println(InputValidation.testInputs);
+        
         //fields for calculating the lotto number
         //default values are for testing so I don't have to enter inputs over and over
-        String redCar="no";
+       /* String redCar="no";
         String petName="Skoogie";
         int petAge=6;
         int luckyNumber=7;
@@ -152,7 +157,7 @@ public class Main {
            System.out.println("Play again? (yes, no)");
            choice = scanner.nextLine();
         }
-        System.out.println("Thank you for playing.");
+        System.out.println("Thank you for playing.");*/
     }
 
 }
