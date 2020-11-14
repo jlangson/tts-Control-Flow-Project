@@ -4,14 +4,27 @@
  * and open the template in the editor.
  */
 package ControlFlow;
-import java.util.function.*;
 
 /**
  *
  * @author jared
  */
 public class InputValidation {
+    //enable line wrap in your IDE
     public static String[] testInputs = {"yes", "no", "y", "n", "YES", "NO", "123", "85.0", "-1", "0", "d8($()*", "1988", "32", "50.0", "50.00", "50.01", "50.1", "09", "12", "200", "100", "35.33", "", "\n", "\t"}; 
+    
+    //pet name must be at least 3 characters because generateLottoNumbers
+    //takes the ASCII value of the 3rd character.
+    public static boolean validPetName(String name){
+        return name.length() > 2;
+    }
+    
+    //makes sure the actor's name is not empty
+    //doesn't check for anything else. Heard someone tried
+    // to name their baby the @ symbol
+    public static boolean validActorName(String name){
+        return name.length() > 0; 
+    }
     
     //true for all variations of y yes n and no
     public static boolean isYesNo (String response){

@@ -6,6 +6,7 @@
 package ControlFlow;
 import java.util.Scanner;
 import java.lang.Math;
+import java.util.Arrays;
 /**
  *
  * @author jared
@@ -15,7 +16,6 @@ public class Main {
     //generate 5 random numbers between 1 and 65
     //generate a "magic ball" number between 1 and 75
     //viewer should enable line wrap
-//    @SuppressWarnings("empty-statement")
     public static int[] generateLottoNumbers(String redCar, String petName, int petAge, int luckyNumber, String doYouHaveAFavoriteQB, int qbJerseyNumber, int carYearModel, String favoriteActorFirstName, int randomNumberOnetoFifty){
         
         int[] lottoNumbers = {0,1,2,3,4,5}; //place holder values
@@ -88,7 +88,6 @@ public class Main {
         }
         return false;
     }
-
     /**
      * @param args the command line arguments
      */
@@ -119,9 +118,9 @@ public class Main {
         System.out.printf("Hi %s\n", name);
         
         //go into picking lotto numbers if yes.
-        System.out.println("Do you wish to continue and pick your lotto numbers? (yes)");
+        System.out.println("Do you wish to continue and pick your lotto numbers? (say yes)");
         String choice = scanner.nextLine();
-        while(choice.equals("y") || choice.equals("yes")){
+        while(choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")){
             System.out.println("Do you have a red car? (yes, no)");
             line = scanner.nextLine();
             while(!InputValidation.isYesNo(line)){
@@ -131,6 +130,10 @@ public class Main {
             redCar = line;
             System.out.println("What is the name of your favorite pet?");
             line = scanner.nextLine();
+            while(!InputValidation.validPetName(line)){
+                System.out.println("Petname must be at least 3 characters");
+                line = scanner.nextLine();
+            }
             petName =  line;
             System.out.println("What is the age of your favorite pet?");
             line = scanner.nextLine();
@@ -160,7 +163,7 @@ public class Main {
                 System.out.println("What is your favorite QB's jersey number");
                 line = scanner.nextLine();
                 while(!InputValidation.isQBJersey(line)){ //isQBJersey checks if it is int AND if it is 0 to 19 inclusive. 1 to 19 is current and 0 is a historical value
-                    System.out.println("QB Jersseys must be an int from 0 to 19."
+                    System.out.println("QB Jerseys must be an int from 0 to 19."
                             + "\nhttps://en.wikipedia.org/wiki/National_Football_League_uniform_numbers#Current_system");
                     line = scanner.nextLine();
                 }
@@ -177,6 +180,10 @@ public class Main {
             carYearModel = Integer.parseInt(line);
             System.out.println("What is the first name of your favorite actor or actresss");
             line = scanner.nextLine();
+            while(!InputValidation.validActorName(line)){
+                System.out.println("Name cannot be empty");
+                line = scanner.nextLine();
+            }
             favoriteActorFirstName = line;
             System.out.println("Pretend you're a RNG. Enter a random number between 1 and 50");
             line = scanner.nextLine();
@@ -184,13 +191,16 @@ public class Main {
                 System.out.println("Number must be between 1 and 50 inclusive.");
                 line = scanner.nextLine();
             }
+            //accepts doubles and casts to int for generateLottoNumbers
             randomNumberOnetoFifty = (int) Double.parseDouble(line);
 
             
             int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
             System.out.println("break here");
+            //sort lotto numbers, but NOT magicBall
+            Arrays.sort(lottoNumbers, 0, lottoNumbers.length-1);
             printLottoNumbers(lottoNumbers);
-
+            
             //repeat if choice is y or yes
            System.out.println("Play again? (yes, no)");
            choice = scanner.nextLine();
