@@ -53,7 +53,7 @@ public class InputValidation {
     }
     
     //if the number is between 1 and 50 inclusive return true
-    public static boolean between1and50(String str){
+    public static boolean between1And50(String str){
         //uses double not int because otherwise 3.5 would return false. 
         //but in implementation of other methods, all numbers are treated as ints. 
         try{
@@ -68,7 +68,7 @@ public class InputValidation {
     //this method calls all the above boolean methods on the testInputs string array. 
    public static void runTests(){
     for(String input : testInputs){
-        System.out.println(input+ "\tisYesNo?\t" + isYesNo(input) +"\tisInt?\t" + isInt(input) +"\tisTwoChars\t" + isTwoChars(input) + "\tisQBJersey\t" + isQBJersey(input) + "\tisCarModel\t" + isCarModel(input) +"\tb/t1.50\t" + between1and50(input));
+        System.out.println(input+ "\tisYesNo?\t" + isYesNo(input) +"\tisInt?\t" + isInt(input) +"\tisTwoChars\t" + isTwoChars(input) + "\tisQBJersey\t" + isQBJersey(input) + "\tisCarModel\t" + isCarModel(input) +"\tb/t1.50\t" + between1And50(input));
         }
    } 
 }
