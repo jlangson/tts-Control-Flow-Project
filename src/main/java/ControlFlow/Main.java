@@ -33,7 +33,7 @@ public class Main {
         while(magicBall > 75){
             magicBall-=75;
         }
-        lottoNumbers[5]=magicBall;
+        lottoNumbers[5]=magicBall; //magicBall must be the last item in the array
         //two digit year model + lucky number
         lottoNumbers[0] = carYearModel + luckyNumber;
         //first letter of favorite actor/actress to an integer by ASCII
@@ -75,6 +75,18 @@ public class Main {
         }
         //print magic ball
         System.out.print("Magic ball: " +lottoNumbers[lottoNumbers.length-1] +"\n");        
+    }
+    
+    //input validation methods to follow
+    //true for all variations of y yes n and no
+    public static boolean isYesNo (String response){
+        String[] answers = {"y", "yes", "n", "no"};
+        for(String answer : answers){
+            if(response.equalsIgnoreCase(answer)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
