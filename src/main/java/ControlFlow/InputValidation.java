@@ -23,25 +23,35 @@ public class InputValidation {
         return false;
     }
     
-    public static String[] testInputs = {"yes", "no", "y", "n", "YES", "NO", "123", "85.0", "-1", "0", "asd82374(*@#$()*", "1988", "09", "", "200", "100", "35.33", "\n", "\t"}; 
-    
-    //I want this to take a function so I can test that function. 
-    public static void runTests(Consumer<String> func){
-        for(String input : testInputs){
-            System.out.print(input +" isValid? ");
-            boolean bool = func(input);
-           System.out.println(func(input));
-        //    System.out.println(String.valueOf(func(input)));
-            
-            
-        
+    public static boolean isInt(String str){
+        try {
+            int n = Integer.parseInt(str);
+        } catch(NumberFormatException nfe){
+            return false;
         }
-       
-        
-    }
-
-    private static void func(String input) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
     
+    //tests to see if input is two digits. used for checking car model number
+    public static boolean isTwoChars(String str){
+        return str.length()==2;
+    }
+    
+    public static boolean isQBJersey(String str){
+        if(isInt(str)){
+            int n = Integer.parseInt(str);
+            //1 to 19 are current QB jersey positions. 0 has ben used historically https://en.wikipedia.org/wiki/National_Football_League_uniform_numbers#Current_system
+            return n >=0 && n<=19; 
+        }
+        return false;
+    }
+    
+    public static String[] testInputs = {"yes", "no", "y", "n", "YES", "NO", "123", "85.0", "-1", "0", "d8($()*", "1988", "09", "200", "100", "35.33", "", "\n", "\t"}; 
+    
+   public static void runTests(){
+    for(String input : testInputs){
+        System.out.println(input+ "\tisYesNo?\t" + isYesNo(input) +"\tisInt?\t" + isInt(input) +"\tisTwoChars\t" + isTwoChars(input) + "\tisQBJersey\t" + isQBJersey(input));
+   
+        }
+   } 
 }

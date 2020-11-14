@@ -93,10 +93,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-//        InputValidation.testInputs(isYesNo(InputValidation.testInputs));
-        InputValidation.runTests(InputValidation::isYesNo);
-//      System.out.println(InputValidation.testInputs);
+        InputValidation.runTests();
         
         //fields for calculating the lotto number
         //default values are for testing so I don't have to enter inputs over and over
