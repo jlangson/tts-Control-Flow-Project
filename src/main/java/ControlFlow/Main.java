@@ -95,7 +95,7 @@ public class Main {
         
         //fields for calculating the lotto number
         //default values are for testing so I don't have to enter inputs over and over
-        String redCar="no"; //not used in generated lotto numbers
+        String redCar="no"; //not used in generating lotto numbers
         String petName="Skoogie";
         int petAge=6;
         int luckyNumber=7;
@@ -185,7 +185,7 @@ public class Main {
                 line = scanner.nextLine();
             }
             favoriteActorFirstName = line;
-            System.out.println("Pretend you're a RNG. Enter a random number between 1 and 50");
+            System.out.println("Enter a random number between 1 and 50");
             line = scanner.nextLine();
             while(!InputValidation.between1And50(line)){
                 System.out.println("Number must be between 1 and 50 inclusive.");
@@ -196,7 +196,7 @@ public class Main {
 
             
             int[] lottoNumbers = generateLottoNumbers(redCar, petName, petAge, luckyNumber, doYouHaveAFavoriteQB, qbJerseyNumber, carYearModel, favoriteActorFirstName, randomNumberOnetoFifty); 
-            System.out.println("break here");
+    
             //sort lotto numbers, but NOT magicBall
             Arrays.sort(lottoNumbers, 0, lottoNumbers.length-1);
             printLottoNumbers(lottoNumbers);
