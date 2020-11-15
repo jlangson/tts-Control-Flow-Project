@@ -8,6 +8,6 @@ Note, enable line-wrap in your IDE / text editor.
 Written with gradle.
 
 InputValidation.java was a class I made to handle the input validation / error checking. 
-It assumes all inputs are strings makes various checks based on program requirements
+It assumes all inputs are strings and makes various checks based on program requirements
 
 Screenshots of execution included in repo. 
